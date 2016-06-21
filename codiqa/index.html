@@ -43,7 +43,7 @@
   
                   var geocoder = new google.maps.Geocoder();
                   geocoder.geocode({
-                      'address': 'Madison, WI'
+                      'address': 'NUS Computing'
                   }, function(results, status) {
                       if (status == google.maps.GeocoderStatus.OK) {
   
@@ -63,28 +63,75 @@
   </div>
   <div data-role="page" data-control-title="Main" id="page2">
       <div data-role="content">
-          <div data-role="fieldcontain" data-controltype="selectmenu">
-              <label for="selectmenu3">
-                  Choose:
-              </label>
-              <select id="selectmenu3" data-native-menu="false" name="" data-mini="true">
-                  <option value="option1">
-                      Option 1
-                  </option>
-              </select>
-          </div>
-          <a data-role="button" href="#page2">
-              Button
-          </a>
           <div data-role="fieldcontain" data-controltype="textarea">
               <label for="textarea1">
-                  Title
+                  Current Location
               </label>
               <textarea name="" id="textarea1" placeholder=""></textarea>
+          </div>
+          <a data-role="button" href="#page3">
+              Menu
+          </a>
+          <div style="width: 288px; height: 200px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;"
+          data-controltype="image" id="Your Character">
+              <img src="https://codiqa.com/static/images/v2/image.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px">
+          </div>
+          <div data-role="fieldcontain" data-controltype="textarea">
+              <label for="textarea2">
+                  Stats
+              </label>
+              <textarea name="" id="textarea2" placeholder=""></textarea>
           </div>
       </div>
   </div>
   <div data-role="page" data-control-title="Menu" id="page3">
+      <div data-role="content">
+          <a data-role="button" href="#page5">
+              Items
+          </a>
+          <a data-role="button" href="#page6">
+              Boss
+          </a>
+          <a data-role="button" href="#page7">
+              Skills
+          </a>
+          <a data-role="button" href="#page8">
+              Settings
+          </a>
+          <a data-role="button" href="#page9">
+              PvP
+          </a>
+          <a data-role="button" href="#page2">
+              Back
+          </a>
+      </div>
+  </div>
+  <div data-role="page" data-control-title="Items" id="page5">
+      <div data-role="content">
+          <div data-role="navbar" data-iconpos="top">
+              <ul>
+                  <li>
+                      <a href="#page5" data-transition="fade" data-theme="" data-icon="">
+                          Button
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+  <div data-role="page" data-control-title="Boss" id="page6">
+      <div data-role="content">
+      </div>
+  </div>
+  <div data-role="page" data-control-title="Skills" id="page7">
+      <div data-role="content">
+      </div>
+  </div>
+  <div data-role="page" data-control-title="Settings" id="page8">
+      <div data-role="content">
+      </div>
+  </div>
+  <div data-role="page" data-control-title="PvP" id="page9">
       <div data-role="content">
       </div>
   </div>
