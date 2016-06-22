@@ -1,100 +1,132 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>NUS Battlefront</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta charset="utf-8">
+	<title>NUS Battlefront</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  <link href="css/codiqa.ext.min.css" rel="stylesheet">
-  <link href="css/jquery.mobile.theme-1.3.1.min.css" rel="stylesheet">
-  <link href="css/jquery-mobile.css" rel="stylesheet">
-  <link href="css/jquery.mobile.structure-1.3.1.min.css" rel="stylesheet">
+	<link href="css/codiqa.ext.min.css" rel="stylesheet">
+	<link href="css/jquery.mobile.theme-1.3.1.min.css" rel="stylesheet">
+	<link href="css/jquery-mobile.css" rel="stylesheet">
+	<link href="css/jquery.mobile.structure-1.3.1.min.css" rel="stylesheet">
 
-  <script src="js/jquery-1.9.1.min.js"></script>
-  <script src="js/jquery.mobile-1.3.1.min.js"></script>
-  <script src="js/codiqa.ext.min.js"></script>
-  <script src="js/nus-battlefront.js"></script>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery.mobile-1.3.1.min.js"></script>
+	<script src="js/codiqa.ext.min.js"></script>
+	<script src="js/nus-battlefront.js"></script>
 
-  <script>
-  	$(function() {
-  		navigator.geolocation.getCurrentPosition(locationSuccess,function(){alert("did not manage to get location");})
-  	});
+	<script>
+		$(function() {
+			navigator.geolocation.getCurrentPosition(locationSuccess,function(){alert("did not manage to get location");})
+		});
 
-  	function locationSuccess(location) {
+		function locationSuccess(location) {
   		//alert(location.coords.latitude+" "+location.coords.longitude);
   		latlon = location.coords.latitude+','+location.coords.longitude;
   	}
-  	</script>
+  </script>
 </head>
 <body>
-  <div data-role="page" data-control-title="Home" id="page1">
-      <div data-role="content">
-          <div style="width: 288px; height: 200px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;"
-          data-controltype="image">
-              <img src="https://codiqa.com/static/images/v2/image.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px">
-          </div>
-          <a data-role="button" href="#page2">
-              Check In
-          </a>
-          <div id="googlemapsjs2" class="google-map" style="width: 288px; height: 200px; margin-left: auto; margin-right: auto">
-          </div>
-          <script type="text/javascript">
-                  window.CodiqaControls && window.CodiqaControls.register('googlemaps', 'googlemapsjs2', {
-              ready: function(control) {
-  
-                  control.options = {
-                      zoom: 14,
-                      mapTypeId: google.maps.MapTypeId.ROADMAP
-                  };
-  
-                  control.el = document.getElementById(control._id);
-                  control.map = new google.maps.Map(control.el, control.options);
-  
-                  var geocoder = new google.maps.Geocoder();
-                  geocoder.geocode({
-                      'address': 'NUS Computing'
-                  }, function(results, status) {
-                      if (status == google.maps.GeocoderStatus.OK) {
-  
-                          var marker = new google.maps.Marker({
-                              map: control.map,
-                              position: results[0].geometry.location
-                          });
-                          control.center = results[0].geometry.location;
-                          control.map.setCenter(control.center);
-                      }
-                  });
-  
-              }
-          });
-          </script>
-      </div>
-  </div>
-  <div data-role="page" data-control-title="Main" id="page2">
-      <div data-role="content">
-          <div data-role="fieldcontain" data-controltype="textarea">
-              <label for="textarea1">
-                  Current Location
-              </label>
-              <textarea name="" id="textarea1" placeholder=""></textarea>
-          </div>
-          <a data-role="button" href="#page3">
-              Menu
-          </a>
-          <div style="width: 288px; height: 200px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;"
-          data-controltype="image" id="Your Character">
-              <img src="https://codiqa.com/static/images/v2/image.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px">
-          </div>
-          <div data-role="fieldcontain" data-controltype="textarea">
-              <label for="textarea2">
-                  Stats
-              </label>
-              <textarea name="" id="textarea2" placeholder=""></textarea>
-          </div>
-      </div>
-  </div>
+	<div data-role="page" data-control-title="Home" id="page1">
+		<div data-role="content">
+			<div style="width: 288px; height: 200px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;"
+			data-controltype="image">
+			<img src="https://codiqa.com/static/images/v2/image.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px">
+		</div>
+		<a data-role="button" href="#page2">
+			Check In
+		</a>
+		<div id="googlemapsjs2" class="google-map" style="width: 288px; height: 200px; margin-left: auto; margin-right: auto">
+		</div>
+		<script type="text/javascript">
+			window.CodiqaControls && window.CodiqaControls.register('googlemaps', 'googlemapsjs2', {
+				ready: function(control) {
+
+					control.options = {
+						zoom: 14,
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					};
+
+					control.el = document.getElementById(control._id);
+					control.map = new google.maps.Map(control.el, control.options);
+
+					var geocoder = new google.maps.Geocoder();
+					geocoder.geocode({
+						'address': 'NUS Computing'
+					}, function(results, status) {
+						if (status == google.maps.GeocoderStatus.OK) {
+
+							var marker = new google.maps.Marker({
+								map: control.map,
+								position: results[0].geometry.location
+							});
+							control.center = results[0].geometry.location;
+							control.map.setCenter(control.center);
+						}
+					});
+
+				}
+			});
+		</script>
+	</div>
+</div>
+<div data-role="page" data-control-title="Main" id="page2">
+	<div data-role="content">
+		<a href="#alert-popup" data-rel="popup" data-role="button" data-inline="true">Menu</a>
+		<div data-role="popup" id="alert-popup" data-theme="c">
+			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+			<h3>Let's go somewhere else!</h3>
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<a data-role="button" href="#page5"><img src="css/images/christmas-lollipop.png" style="width: 50px; height: 50px;"/><br></br>items</a>
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page6">Boss</a>
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page7">Skills</a>    
+				</div>
+				<div class="ui-block-a">
+					<a data-role="button" href="#page8">Settings</a>              
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page9">PvP</a>              
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page2">Current location</a>              
+				</div>
+				<div class="ui-block-a">
+					<a data-role="button" href="#page1">Check-in</a>              
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page5">Items</a>              
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page5">Items</a>              
+				</div>
+			</div>
+		</div>
+		<div data-role="fieldcontain" data-controltype="textarea">
+			<label for="textarea1">
+				Current Location
+			</label>
+			<textarea name="" id="textarea1" placeholder=""></textarea>
+		</div>
+		<div style="width: 288px; height: 200px; position: relative; background-color: #fbfbfb; border: 1px solid #b8b8b8;"
+		data-controltype="image" id="Your Character">
+		<img src="https://codiqa.com/static/images/v2/image.png" alt="image" style="position: absolute; top: 50%; left: 50%; margin-left: -16px; margin-top: -18px">
+	</div>
+	<div data-role="fieldcontain" data-controltype="textarea">
+		<label for="textarea2">
+			Stats
+		</label>
+		<textarea name="" id="textarea2" placeholder=""></textarea>
+	</div>
+</div>
+</div>
+  <!-- Comment out the Menu page for now
   <div data-role="page" data-control-title="Menu" id="page3">
       <div data-role="content">
           <a data-role="button" href="#page5">
@@ -120,70 +152,196 @@
           </a>
       </div>
   </div>
-  <div data-role="page" data-control-title="Items" id="page5">
-      <div data-role="content">
-          <div data-role="navbar" data-iconpos="top">
-              <ul>
-                  <li>
-                      <a href="#page3" data-transition="fade" data-theme="" data-icon="">
-                          Menu
-                      </a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </div>
-  <div data-role="page" data-control-title="Boss" id="page6">
-      <div data-role="content">
-          <div data-role="navbar" data-iconpos="top">
-              <ul>
-                  <li>
-                      <a href="#page3" data-transition="fade" data-theme="" data-icon="">
-                          Menu
-                      </a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </div>
-  <div data-role="page" data-control-title="Skills" id="page7">
-      <div data-role="content">
-          <div data-role="navbar" data-iconpos="top">
-              <ul>
-                  <li>
-                      <a href="#page3" data-transition="fade" data-theme="" data-icon="">
-                          Menu
-                      </a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </div>
-  <div data-role="page" data-control-title="Settings" id="page8">
-      <div data-role="content">
-          <div data-role="navbar" data-iconpos="top">
-              <ul>
-                  <li>
-                      <a href="#page3" data-transition="fade" data-theme="" data-icon="">
-                          Menu
-                      </a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </div>
-  <div data-role="page" data-control-title="PvP" id="page9">
-      <div data-role="content">
-          <div data-role="navbar" data-iconpos="top">
-              <ul>
-                  <li>
-                      <a href="#page3" data-transition="fade" data-theme="" data-icon="">
-                          Menu
-                      </a>
-                  </li>
-              </ul>
-          </div>
-      </div>
-  </div>
+-->
+<div data-role="page" data-control-title="Items" id="page5">
+	<div data-role="content">
+		<a href="#alert-popup" data-rel="popup" data-role="button" data-inline="true">Menu</a>
+		<div data-role="popup" id="alert-popup" data-theme="c">
+			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+			<h3>Let's go somewhere else!</h3>
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<a data-role="button" href="#page5"><img src="css/images/christmas-lollipop.png" style="width: 50px; height: 50px;"/><br></br>items</a>
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page6">Boss</a>
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page7">Skills</a>    
+				</div>
+				<div class="ui-block-a">
+					<a data-role="button" href="#page8">Settings</a>              
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page9">PvP</a>              
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page2">Current location</a>              
+				</div>
+				<div class="ui-block-a">
+					<a data-role="button" href="#page1">Check-in</a>              
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page5">Items</a>              
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page5">Items</a>              
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div data-role="page" data-control-title="Boss" id="page6">
+	<div data-role="content">
+		<a href="#alert-popup" data-rel="popup" data-role="button" data-inline="true">Menu</a>
+		<div data-role="popup" id="alert-popup" data-theme="c">
+			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+			<h3>Let's go somewhere else!</h3>
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<a data-role="button" href="#page5"><img src="css/images/christmas-lollipop.png" style="width: 50px; height: 50px;"/><br></br>items</a>
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page6">Boss</a>
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page7">Skills</a>    
+				</div>
+				<div class="ui-block-a">
+					<a data-role="button" href="#page8">Settings</a>              
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page9">PvP</a>              
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page2">Current location</a>              
+				</div>
+				<div class="ui-block-a">
+					<a data-role="button" href="#page1">Check-in</a>              
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page5">Items</a>              
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page5">Items</a>              
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div data-role="page" data-control-title="Skills" id="page7">
+	<div data-role="content">
+		<a href="#alert-popup" data-rel="popup" data-role="button" data-inline="true">Menu</a>
+		<div data-role="popup" id="alert-popup" data-theme="c">
+			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+			<h3>Let's go somewhere else!</h3>
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<a data-role="button" href="#page5"><img src="css/images/christmas-lollipop.png" style="width: 50px; height: 50px;"/><br></br>items</a>
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page6">Boss</a>
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page7">Skills</a>    
+				</div>
+				<div class="ui-block-a">
+					<a data-role="button" href="#page8">Settings</a>              
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page9">PvP</a>              
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page2">Current location</a>              
+				</div>
+				<div class="ui-block-a">
+					<a data-role="button" href="#page1">Check-in</a>              
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page5">Items</a>              
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page5">Items</a>              
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div data-role="page" data-control-title="Settings" id="page8">
+	<div data-role="content">
+		<a href="#alert-popup" data-rel="popup" data-role="button" data-inline="true">Menu</a>
+		<div data-role="popup" id="alert-popup" data-theme="c">
+			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+			<h3>Let's go somewhere else!</h3>
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<a data-role="button" href="#page5"><img src="css/images/christmas-lollipop.png" style="width: 50px; height: 50px;"/><br></br>items</a>
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page6">Boss</a>
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page7">Skills</a>    
+				</div>
+				<div class="ui-block-a">
+					<a data-role="button" href="#page8">Settings</a>              
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page9">PvP</a>              
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page2">Current location</a>              
+				</div>
+				<div class="ui-block-a">
+					<a data-role="button" href="#page1">Check-in</a>              
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page5">Items</a>              
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page5">Items</a>              
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div data-role="page" data-control-title="PvP" id="page9">
+	<div data-role="content">
+		<a href="#alert-popup" data-rel="popup" data-role="button" data-inline="true">Menu</a>
+		<div data-role="popup" id="alert-popup" data-theme="c">
+			<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
+			<h3>Let's go somewhere else!</h3>
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<a data-role="button" href="#page5"><img src="css/images/christmas-lollipop.png" style="width: 50px; height: 50px;"/><br></br>items</a>
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page6">Boss</a>
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page7">Skills</a>    
+				</div>
+				<div class="ui-block-a">
+					<a data-role="button" href="#page8">Settings</a>              
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page9">PvP</a>              
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page2">Current location</a>              
+				</div>
+				<div class="ui-block-a">
+					<a data-role="button" href="#page1">Check-in</a>              
+				</div>
+				<div class="ui-block-b">
+					<a data-role="button" href="#page5">Items</a>              
+				</div>
+				<div class="ui-block-c">
+					<a data-role="button" href="#page5">Items</a>              
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 </body>
 </html>
