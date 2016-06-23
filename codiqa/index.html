@@ -23,8 +23,9 @@
 		});
 
 		function locationSuccess(location) {
-  		//alert(location.coords.latitude+" "+location.coords.longitude);
+  		alert(location.coords.latitude+" "+location.coords.longitude);
   		latlon = location.coords.latitude+','+location.coords.longitude;
+  		//$("#map").attr('src','https://maps.googleapis.com/maps/api/staticmap?scale=1&zoom=10&center='+latlon+'&sensor=false&scale=1')
   	}
   </script>
 </head>
@@ -38,38 +39,8 @@
 		<a data-role="button" href="#page2">
 			Check In
 		</a>
-		<div id="googlemapsjs2" class="google-map" style="width: 288px; height: 200px; margin-left: auto; margin-right: auto">
-		</div>
-		<script type="text/javascript">
-			window.CodiqaControls && window.CodiqaControls.register('googlemaps', 'googlemapsjs2', {
-				ready: function(control) {
-
-					control.options = {
-						zoom: 14,
-						mapTypeId: google.maps.MapTypeId.ROADMAP
-					};
-
-					control.el = document.getElementById(control._id);
-					control.map = new google.maps.Map(control.el, control.options);
-
-					var geocoder = new google.maps.Geocoder();
-					geocoder.geocode({
-						'address': 'NUS Computing'
-					}, function(results, status) {
-						if (status == google.maps.GeocoderStatus.OK) {
-
-							var marker = new google.maps.Marker({
-								map: control.map,
-								position: results[0].geometry.location
-							});
-							control.center = results[0].geometry.location;
-							control.map.setCenter(control.center);
-						}
-					});
-
-				}
-			});
-		</script>
+		<img id="map" src="https://maps.googleapis.com/maps/api/staticmap?center=NUS Computing;zoom=10&amp;size=288x200&amp;markers=NUS Computing&amp;sensor=false" width="288" height="200">
+		
 	</div>
 </div>
 <div data-role="page" data-control-title="Main" id="page2">
